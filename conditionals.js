@@ -15,6 +15,7 @@ if (!raining) {
 if (isCitizen && age > 18) {
   console.log("You are eligible to vote.");
 }
+
 if (temperature < -40 || temperature > 40) {
   console.log("Maybe going outside isn't such a great idea...");
 } else if (temperature < 0) {
