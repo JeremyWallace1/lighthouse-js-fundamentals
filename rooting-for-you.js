@@ -21,22 +21,15 @@ const metric = 'redness'
 const judgeVegetable = function (vegetables, metric) {
   let winner = "";
   let compare = 0;  
-  console.log(vegetables.length);
-  for (i = 0; i < vegetables.length; i++) {
-    console.log(vegetables.length);
-    if (vegetables.metric > compare) {
-      console.log([vegetables]);
-      console.log(winner);
-      console.log(compare);
-      console.log(i);
-      console.log(vegetables);
-      winner = [vegetables].submitter;
-      compare = [vegetables].metric;
-    } else if ([vegetables].metric = compare) {
-      winner += " & " + [vegetables].submitter;
+  for (let i = 0; i < vegetables.length; i++) {
+    if (vegetables[i][metric] > compare) {
+      winner = vegetables[i].submitter;
+      compare = vegetables[i][metric];
+    } else if (vegetables[i][metric] == compare) {
+      winner += " & " + vegetables[i].submitter;
     }
   }
   return winner;
 }
 
-console.log("The winner is... " + judgeVegetable(vegetables, metric));
+console.log(judgeVegetable(vegetables, metric));
