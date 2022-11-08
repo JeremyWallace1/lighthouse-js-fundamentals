@@ -1,7 +1,18 @@
 function range(start, end, step) {
-  for (var i = start; i <= end; i += step) {
-    console.log(i);
+  if ((start == "undefined") || (end == "undefined") || (start > end) || (step <= 0)) {
+    return ([]);
+  } else {
+    let array = [];
+    for (let i = start; i <= end; i += step) {
+      array.push(i);
+    }
+    return (array);
   }
-}
+};
 
-console.log(range(0, 10, 2)); 
+console.log(range(0, 10, 2));
+console.log(range(10, 30, 5));
+console.log(range(-5, 2, 3));
+console.log(range());
+console.log(range(10, 5, 5));
+console.log(range(5, 10, -5));
