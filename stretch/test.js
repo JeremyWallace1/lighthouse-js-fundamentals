@@ -1,18 +1,12 @@
-function range(start, end, step) {
-  if ((start == "undefined") || (end == "undefined") || (start > end) || (step <= 0)) {
-    return ([]);
+const smartGarbage = function (trash, bins) {
+  // Your code in here ...
+  if (trash === 'waste') {
+    bins.waste++;
+  } else if (trash === 'recycling') {
+    bins.recycling++;
   } else {
-    let array = [];
-    for (let i = start; i <= end; i += step) {
-      array.push(i);
-    }
-    return (array);
+    bins.compost++;
   }
+  return bins;
 };
-
-console.log(range(0, 10, 2));
-console.log(range(10, 30, 5));
-console.log(range(-5, 2, 3));
-console.log(range());
-console.log(range(10, 5, 5));
-console.log(range(5, 10, -5));
+console.log(smartGarbage('recycling', { waste: 4, recycling: 2, compost: 5 }));
