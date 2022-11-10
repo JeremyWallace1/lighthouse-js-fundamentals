@@ -9,48 +9,35 @@ let prompt = require("prompt-sync")(
   }
 );
 // code below (replace this example)
-// Write a guessing game where the user has to guess a secret number. 
-//  -- Generating a random number
 
-const randomNumber = Math.floor(Math.random() * (100) + 1);
+const randomNumber = Math.floor(Math.random() * (100) + 1); // generate a random number between 1 and 100 (inclusive)
 let answer;
-let attempts = 0;
-
-function isNum(v) {
-  return /\d/.test(v);
-}
+let attempts = [];
 
 const numberGuesser = function() {
-  do {
-    console.log(randomNumber + ", " + typeof randomNumber);
+  do { //do...while loop so it runs at least once
     answer = prompt("Guess a number: ");
-    if 
-    switch(randomNumber) {
-      case (answer === randomNumber):
-        attempts += 1;
-        console.log("You got it! You took " + attempts + " attempts!");
-        return;
-      case (answer < randomNumber):
-        attempts += 1;
-        console.log("Too Low!");
-        break;
-      case (answer > randomNumber):
-        attempts += 1;
-        console.log("Too High!");
-        break;
-      case ((typeof answer) !== "number"):
+    if (Number(answer) === randomNumber) {
+      attempts.push(Number(answer));
+      return console.log("You got it! You took " + (attempts.length) + " attempts!");
+    } else if (Number(answer) < randomNumber) {
+        if (attempts.includes(Number(answer))) {
+          console.log("Already Guessed!");
+        } else {
+          attempts.push(Number(answer));
+          console.log("Too Low!");
+        }
+    } else if (Number(answer) > randomNumber) {
+        if (attempts.includes(Number(answer))) {
+          console.log("Already Guessed!");
+        } else {
+          attempts.push(Number(answer));
+          console.log("Too High!");
+        }
+    } else if ((typeof answer) !== "number") { // not counted as an attempt as it is not a number
         console.log("Not a number! Try again!");
-    }
-  } while (answer !== randomNumber);
+    }        
+  } while (answer !== randomNumber); //keeps running until the number inputted by user matches the randomly generated number
 };
-
-// After every guess the program tells the user whether their number was too large or too small. 
-// At the end, the number of tries needed should be printed.
-// Inputting the same number multiple times should only count as one try. 
-// If the user provides an answer which isn't a number, print an error message and do not count this as a try.
-
-
-//console.log(generateNumber());
-//console.log("You answered: " + answer);
 
 numberGuesser();
