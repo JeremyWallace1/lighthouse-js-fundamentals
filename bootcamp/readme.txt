@@ -1,1 +1,0 @@
-all files for 12 weeks of bootcamp are contained herein
